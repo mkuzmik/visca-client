@@ -14,6 +14,6 @@ public class ExecuteSequence extends ViscaCommand {
 
     @Override
     public String getCode() {
-        return "execute-sequence";
+        return "execute-seq";
     }
 }

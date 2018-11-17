@@ -14,6 +14,6 @@ public class EndSequence extends ViscaCommand {
 
     @Override
     public String getCode() {
-        return "end-sequence";
+        return "end-seq";
     }
 }

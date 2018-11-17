@@ -2,6 +2,8 @@ package com.agh.connection;
 
 import com.agh.command.ViscaResponse;
 
+import static com.agh.Util.byteArrayToString;
+
 public class StubConnection implements ViscaConnection {
 
     @Override
@@ -11,7 +13,7 @@ public class StubConnection implements ViscaConnection {
 
     @Override
     public boolean writeBytes(byte[] data) {
-        System.out.println("Writing data: " + data);
+        System.out.println("Writing data: " + byteArrayToString(data));
         return true;
     }
 }

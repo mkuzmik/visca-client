@@ -12,28 +12,27 @@ import java.util.List;
 
 public class DefineSequence extends ViscaCommand {
 
-    private CommandLine commandLine = new CommandLine();
-
     @Override
     public ViscaResponse execute(ViscaConnection viscaConnection) {
         List<ViscaCommand> commands = new ArrayList<>();
         ViscaCommand command = null;
 
         // only for param validation
-        getRequiredParam("name");
+        String seqName = getRequiredParam("name");
+        CommandLine commandLine = new CommandLine(" " + seqName + "$ ");
 
         while (command == null || !command.getCode().equals(CommandRegistry.END_SEQ.getCode())) {
             command = commandLine.readCommand();
             commands.add(command);
         }
 
-        SequenceRegistry.INSTANCE.add(getRequiredParam("name"), new Sequence(commands));
+        SequenceRegistry.INSTANCE.add(seqName, new Sequence(commands));
 
         return new ViscaResponse(new byte[0]);
     }
 
     @Override
     public String getCode() {
-        return "sequence";
+        return "seq";
     }
 }

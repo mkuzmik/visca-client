@@ -11,13 +11,13 @@ public class PanTiltAbsolutePos extends ViscaCommand {
 
     @Override
     public ViscaResponse execute(ViscaConnection viscaConnection) {
-        byte[] commandData = getCommandData(new GetPanTiltMaxSpeedCmd(), (byte) 0, (byte) 1);
+        byte[] commandData = getCommandData(new PanTiltAbsolutePosCmd(), (byte) 0, (byte) 1);
         viscaConnection.writeBytes(commandData);
         return viscaConnection.readResponse();
     }
 
     @Override
     public String getCode() {
-        return "get-max-speed";
+        return "move-absolute-pos";
     }
 }
