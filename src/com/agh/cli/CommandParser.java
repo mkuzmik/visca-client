@@ -20,11 +20,14 @@ public class CommandParser {
         if (splitted.size() < 1) throw new InvalidCommandException("No command provided");
 
         ViscaCommand command = CommandRegister.getByCode(splitted.get(0));
-        splitted.remove(0);
 
         Map<String, String> params = new HashMap<>();
 
         splitted.forEach(param -> {
+            if (param.equals(command.getCode())) {
+                return;
+            }
+
             String[] parameter = param.split("=");
 
             if (parameter.length < 2) throw new InvalidCommandException("Invalid parameter found. A" +
