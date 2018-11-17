@@ -1,6 +1,6 @@
 package com.agh.cli;
 
-import com.agh.command.CommandRegister;
+import com.agh.command.CommandRegistry;
 import com.agh.command.ViscaCommand;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class CommandParser {
 
         if (splitted.size() < 1) throw new InvalidCommandException("No command provided");
 
-        ViscaCommand command = CommandRegister.getByCode(splitted.get(0));
+        ViscaCommand command = CommandRegistry.getByCode(splitted.get(0));
 
         Map<String, String> params = new HashMap<>();
 

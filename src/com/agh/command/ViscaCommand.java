@@ -30,4 +30,12 @@ public abstract class ViscaCommand {
         vCmd.destinationAdr = destinationAdr;
         return vCmd.getCommandData();
     }
+
+    protected String getRequiredParam(String param) {
+        String value = getParams().get(param);
+        if (value == null) {
+            throw new CommandParameterException(String.format("Parameter %s is required", param));
+        }
+        return value;
+    }
 }

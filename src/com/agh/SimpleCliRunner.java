@@ -10,13 +10,13 @@ public class SimpleCliRunner {
     public static void run(ViscaConnection connection) {
         CommandLine commandLine = new CommandLine();
 
-        while(true) {
+        while (true) {
             try {
                 ViscaCommand viscaCommand = commandLine.readCommand();
                 ViscaResponse response = viscaCommand.execute(connection);
                 commandLine.print(response.toString());
             } catch (Exception e) {
-                e.printStackTrace();
+                commandLine.print(e.getClass().getSimpleName() + ": " + e.getMessage());
             }
         }
     }
