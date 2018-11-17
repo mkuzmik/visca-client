@@ -22,12 +22,12 @@ public abstract class ViscaCommand {
 
     public abstract String getCode();
 
-    protected byte[] getCommandData(Cmd cmd, byte sourceAdr, byte destinationAdr) {
+    protected byte[] getCommandData(Cmd cmd) {
         byte[] cmdData = cmd.createCommandData();
         pl.edu.agh.kis.visca.cmd.ViscaCommand vCmd = new pl.edu.agh.kis.visca.cmd.ViscaCommand();
         vCmd.commandData = cmdData;
-        vCmd.sourceAdr = sourceAdr;
-        vCmd.destinationAdr = destinationAdr;
+        vCmd.sourceAdr = resolveSourceAddress();
+        vCmd.destinationAdr = resolveDestinationAddress();
         return vCmd.getCommandData();
     }
 
@@ -38,4 +38,17 @@ public abstract class ViscaCommand {
         }
         return value;
     }
+
+    private byte resolveSourceAddress() {
+        String srcStr = getParams().get("src");
+        return srcStr != null ? Byte.parseByte(srcStr) : getDefaultSourceAddress();
+    }
+
+    private byte resolveDestinationAddress() {
+        String srcStr = getParams().get("dest");
+        return srcStr != null ? Byte.parseByte(srcStr) : getDefaultDestinationAddress();
+    }
+
+    protected abstract byte getDefaultSourceAddress();
+    protected abstract byte getDefaultDestinationAddress();
 }

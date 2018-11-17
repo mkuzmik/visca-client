@@ -1,10 +1,10 @@
 package com.agh.command.implementations.sequence;
 
-import com.agh.command.ViscaCommand;
+import com.agh.command.TechnicalCommand;
 import com.agh.command.ViscaResponse;
 import com.agh.connection.ViscaConnection;
 
-public class EndSequence extends ViscaCommand {
+public class EndSequence extends TechnicalCommand {
 
     @Override
     public ViscaResponse execute(ViscaConnection viscaConnection) {

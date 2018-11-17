@@ -9,8 +9,7 @@ public class PanTiltRight extends ViscaCommand {
 
     @Override
     public ViscaResponse execute(ViscaConnection viscaConnection) {
-        byte dest = extractDestinationAdr();
-        byte[] commandData = getCommandData(new PanTiltRightCmd(), (byte) 0, dest);
+        byte[] commandData = getCommandData(new PanTiltRightCmd());
         viscaConnection.writeBytes(commandData);
         return viscaConnection.readResponse();
     }
@@ -20,8 +19,13 @@ public class PanTiltRight extends ViscaCommand {
         return "move-right";
     }
 
-    private byte extractDestinationAdr() {
-        String destStr = getParams().getOrDefault("dest", "1");
-        return Byte.parseByte(destStr);
+    @Override
+    protected byte getDefaultSourceAddress() {
+        return 0;
+    }
+
+    @Override
+    protected byte getDefaultDestinationAddress() {
+        return 1;
     }
 }

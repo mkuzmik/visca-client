@@ -1,13 +1,14 @@
 package com.agh.command.implementations.sequence;
 
 import com.agh.cli.CommandLine;
+import com.agh.command.TechnicalCommand;
 import com.agh.command.ViscaCommand;
 import com.agh.command.ViscaResponse;
 import com.agh.connection.ViscaConnection;
 
 import java.util.List;
 
-public class Sequence extends ViscaCommand {
+public class Sequence extends TechnicalCommand {
 
     private List<ViscaCommand> commands;
     private CommandLine commandLine = new CommandLine();

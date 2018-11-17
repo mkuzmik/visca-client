@@ -11,7 +11,7 @@ public class PanTiltAbsolutePos extends ViscaCommand {
 
     @Override
     public ViscaResponse execute(ViscaConnection viscaConnection) {
-        byte[] commandData = getCommandData(new PanTiltAbsolutePosCmd(), (byte) 0, (byte) 1);
+        byte[] commandData = getCommandData(new PanTiltAbsolutePosCmd());
         viscaConnection.writeBytes(commandData);
         return viscaConnection.readResponse();
     }
@@ -19,5 +19,15 @@ public class PanTiltAbsolutePos extends ViscaCommand {
     @Override
     public String getCode() {
         return "move-absolute-pos";
+    }
+
+    @Override
+    protected byte getDefaultSourceAddress() {
+        return 0;
+    }
+
+    @Override
+    protected byte getDefaultDestinationAddress() {
+        return 1;
     }
 }

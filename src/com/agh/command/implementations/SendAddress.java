@@ -9,7 +9,7 @@ public class SendAddress extends ViscaCommand {
 
     @Override
     public ViscaResponse execute(ViscaConnection viscaConnection) {
-        byte[] commandData = getCommandData(new AddressCmd(), (byte) 0, (byte) 8);
+        byte[] commandData = getCommandData(new AddressCmd());
         viscaConnection.writeBytes(commandData);
         return viscaConnection.readResponse();
     }
@@ -17,5 +17,15 @@ public class SendAddress extends ViscaCommand {
     @Override
     public String getCode() {
         return "send-address";
+    }
+
+    @Override
+    protected byte getDefaultSourceAddress() {
+        return 0;
+    }
+
+    @Override
+    protected byte getDefaultDestinationAddress() {
+        return 8;
     }
 }

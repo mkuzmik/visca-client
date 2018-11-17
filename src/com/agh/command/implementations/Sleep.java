@@ -1,11 +1,12 @@
 package com.agh.command.implementations;
 
+import com.agh.command.TechnicalCommand;
 import com.agh.command.ViscaCommand;
 import com.agh.command.ViscaResponse;
 import com.agh.connection.ViscaConnection;
 import pl.edu.agh.kis.visca.cmd.ClearAllCmd;
 
-public class Sleep extends ViscaCommand {
+public class Sleep extends TechnicalCommand {
 
     @Override
     public ViscaResponse execute(ViscaConnection viscaConnection) {
@@ -23,7 +24,7 @@ public class Sleep extends ViscaCommand {
     }
 
     private int getTimeInSec() {
-        String timeStr = getParams().getOrDefault("time", "1s");
+        String timeStr = getParams().getOrDefault("time", "1");
         return Integer.parseInt(timeStr);
     }
 }
