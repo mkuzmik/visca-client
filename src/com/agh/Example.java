@@ -1,10 +1,21 @@
 package com.agh;
 
-import com.agh.command.ViscaCommand;
 import jssc.SerialPort;
 import jssc.SerialPortException;
 import pl.edu.agh.kis.visca.ViscaResponseReader;
-import pl.edu.agh.kis.visca.cmd.*;
+import pl.edu.agh.kis.visca.ViscaResponseReader.TimeoutException;
+import pl.edu.agh.kis.visca.cmd.AddressCmd;
+import pl.edu.agh.kis.visca.cmd.ClearAllCmd;
+import pl.edu.agh.kis.visca.cmd.GetPanTiltMaxSpeedCmd;
+import pl.edu.agh.kis.visca.cmd.PanTiltAbsolutePosCmd;
+import pl.edu.agh.kis.visca.cmd.PanTiltDownCmd;
+import pl.edu.agh.kis.visca.cmd.PanTiltHomeCmd;
+import pl.edu.agh.kis.visca.cmd.PanTiltLeftCmd;
+import pl.edu.agh.kis.visca.cmd.PanTiltRightCmd;
+import pl.edu.agh.kis.visca.cmd.PanTiltUpCmd;
+import pl.edu.agh.kis.visca.cmd.ViscaCommand;
+import pl.edu.agh.kis.visca.cmd.ZoomTeleStdCmd;
+import pl.edu.agh.kis.visca.cmd.ZoomWideStdCmd;
 
 public class Example {
 
@@ -22,7 +33,7 @@ public class Example {
             try {
                 response = ViscaResponseReader.readResponse(serialPort);
                 System.out.println("> " + byteArrayToString(response));
-            } catch (ViscaResponseReader.TimeoutException var17) {
+            } catch (TimeoutException var17) {
                 System.out.println("! TIMEOUT exception");
             }
 
@@ -33,7 +44,7 @@ public class Example {
             try {
                 response = ViscaResponseReader.readResponse(serialPort);
                 System.out.println("> " + byteArrayToString(response));
-            } catch (ViscaResponseReader.TimeoutException var16) {
+            } catch (TimeoutException var16) {
                 System.out.println("! TIMEOUT exception");
             }
 
@@ -44,7 +55,7 @@ public class Example {
             try {
                 response = ViscaResponseReader.readResponse(serialPort);
                 System.out.println("> " + byteArrayToString(response));
-            } catch (ViscaResponseReader.TimeoutException var15) {
+            } catch (TimeoutException var15) {
                 System.out.println("! TIMEOUT exception");
             }
 
@@ -55,7 +66,7 @@ public class Example {
             try {
                 response = ViscaResponseReader.readResponse(serialPort);
                 System.out.println("> " + byteArrayToString(response));
-            } catch (ViscaResponseReader.TimeoutException var14) {
+            } catch (TimeoutException var14) {
                 System.out.println("! TIMEOUT exception");
             }
 
@@ -66,7 +77,7 @@ public class Example {
             try {
                 response = ViscaResponseReader.readResponse(serialPort);
                 System.out.println("> " + byteArrayToString(response));
-            } catch (ViscaResponseReader.TimeoutException var13) {
+            } catch (TimeoutException var13) {
                 System.out.println("! TIMEOUT exception");
             }
 
@@ -77,7 +88,7 @@ public class Example {
             try {
                 response = ViscaResponseReader.readResponse(serialPort);
                 System.out.println("> " + byteArrayToString(response));
-            } catch (ViscaResponseReader.TimeoutException var12) {
+            } catch (TimeoutException var12) {
                 System.out.println("! TIMEOUT exception");
             }
 
@@ -90,7 +101,7 @@ public class Example {
                 try {
                     response = ViscaResponseReader.readResponse(serialPort);
                     System.out.println("> " + byteArrayToString(response));
-                } catch (ViscaResponseReader.TimeoutException var11) {
+                } catch (TimeoutException var11) {
                     System.out.println("! TIMEOUT exception");
                 }
 
@@ -99,7 +110,7 @@ public class Example {
                 try {
                     response = ViscaResponseReader.readResponse(serialPort);
                     System.out.println("> " + byteArrayToString(response));
-                } catch (ViscaResponseReader.TimeoutException var10) {
+                } catch (TimeoutException var10) {
                     System.out.println("! TIMEOUT exception");
                 }
 
@@ -110,7 +121,7 @@ public class Example {
                 try {
                     response = ViscaResponseReader.readResponse(serialPort);
                     System.out.println("> " + byteArrayToString(response));
-                } catch (ViscaResponseReader.TimeoutException var9) {
+                } catch (TimeoutException var9) {
                     System.out.println("! TIMEOUT exception");
                 }
 
@@ -121,7 +132,7 @@ public class Example {
                 try {
                     response = ViscaResponseReader.readResponse(serialPort);
                     System.out.println("> " + byteArrayToString(response));
-                } catch (ViscaResponseReader.TimeoutException var8) {
+                } catch (TimeoutException var8) {
                     System.out.println("! TIMEOUT exception");
                 }
 
@@ -132,7 +143,7 @@ public class Example {
                 try {
                     response = ViscaResponseReader.readResponse(serialPort);
                     System.out.println("> " + byteArrayToString(response));
-                } catch (ViscaResponseReader.TimeoutException var7) {
+                } catch (TimeoutException var7) {
                     System.out.println("! TIMEOUT exception");
                 }
 
@@ -141,7 +152,7 @@ public class Example {
                 try {
                     response = ViscaResponseReader.readResponse(serialPort);
                     System.out.println("> " + byteArrayToString(response));
-                } catch (ViscaResponseReader.TimeoutException var6) {
+                } catch (TimeoutException var6) {
                     System.out.println("! TIMEOUT exception");
                 }
 
@@ -152,7 +163,7 @@ public class Example {
                 try {
                     response = ViscaResponseReader.readResponse(serialPort);
                     System.out.println("> " + byteArrayToString(response));
-                } catch (ViscaResponseReader.TimeoutException var5) {
+                } catch (TimeoutException var5) {
                     System.out.println("! TIMEOUT exception");
                 }
 
@@ -163,7 +174,7 @@ public class Example {
                 try {
                     response = ViscaResponseReader.readResponse(serialPort);
                     System.out.println("> " + byteArrayToString(response));
-                } catch (ViscaResponseReader.TimeoutException var4) {
+                } catch (TimeoutException var4) {
                     System.out.println("! TIMEOUT exception");
                 }
 
@@ -185,7 +196,7 @@ public class Example {
 
     private static void sendClearAll(SerialPort serialPort) throws SerialPortException {
         byte[] cmdData = (new ClearAllCmd()).createCommandData();
-        com.agh.command.ViscaCommand vCmd = new com.agh.command.ViscaCommand();
+        ViscaCommand vCmd = new ViscaCommand();
         vCmd.commandData = cmdData;
         vCmd.sourceAdr = 0;
         vCmd.destinationAdr = 8;
@@ -196,7 +207,7 @@ public class Example {
 
     private static void sendPanTiltHome(SerialPort serialPort) throws SerialPortException {
         byte[] cmdData = (new PanTiltHomeCmd()).createCommandData();
-        com.agh.command.ViscaCommand vCmd = new com.agh.command.ViscaCommand();
+        ViscaCommand vCmd = new ViscaCommand();
         vCmd.commandData = cmdData;
         vCmd.sourceAdr = 0;
         vCmd.destinationAdr = 1;
@@ -207,7 +218,7 @@ public class Example {
 
     private static void sendPanTiltLeft(SerialPort serialPort) throws SerialPortException {
         byte[] cmdData = (new PanTiltLeftCmd()).createCommandData();
-        com.agh.command.ViscaCommand vCmd = new com.agh.command.ViscaCommand();
+        ViscaCommand vCmd = new ViscaCommand();
         vCmd.commandData = cmdData;
         vCmd.sourceAdr = 0;
         vCmd.destinationAdr = 1;
@@ -218,7 +229,7 @@ public class Example {
 
     private static void sendPanTiltLeft2(SerialPort serialPort) throws SerialPortException {
         byte[] cmdData = (new PanTiltLeftCmd()).createCommandData();
-        com.agh.command.ViscaCommand vCmd = new com.agh.command.ViscaCommand();
+        ViscaCommand vCmd = new ViscaCommand();
         vCmd.commandData = cmdData;
         vCmd.sourceAdr = 0;
         vCmd.destinationAdr = 2;
@@ -229,7 +240,7 @@ public class Example {
 
     private static void sendPanTiltRight(SerialPort serialPort) throws SerialPortException {
         byte[] cmdData = (new PanTiltRightCmd()).createCommandData();
-        com.agh.command.ViscaCommand vCmd = new com.agh.command.ViscaCommand();
+        ViscaCommand vCmd = new ViscaCommand();
         vCmd.commandData = cmdData;
         vCmd.sourceAdr = 0;
         vCmd.destinationAdr = 1;
@@ -240,7 +251,7 @@ public class Example {
 
     private static void sendPanTiltRight2(SerialPort serialPort) throws SerialPortException {
         byte[] cmdData = (new PanTiltRightCmd()).createCommandData();
-        com.agh.command.ViscaCommand vCmd = new com.agh.command.ViscaCommand();
+        ViscaCommand vCmd = new ViscaCommand();
         vCmd.commandData = cmdData;
         vCmd.sourceAdr = 0;
         vCmd.destinationAdr = 2;
@@ -251,7 +262,7 @@ public class Example {
 
     private static void sendPanTiltUp(SerialPort serialPort) throws SerialPortException {
         byte[] cmdData = (new PanTiltUpCmd()).createCommandData();
-        com.agh.command.ViscaCommand vCmd = new com.agh.command.ViscaCommand();
+        ViscaCommand vCmd = new ViscaCommand();
         vCmd.commandData = cmdData;
         vCmd.sourceAdr = 0;
         vCmd.destinationAdr = 1;
@@ -262,7 +273,7 @@ public class Example {
 
     private static void sendPanTiltDown(SerialPort serialPort) throws SerialPortException {
         byte[] cmdData = (new PanTiltDownCmd()).createCommandData();
-        com.agh.command.ViscaCommand vCmd = new com.agh.command.ViscaCommand();
+        ViscaCommand vCmd = new ViscaCommand();
         vCmd.commandData = cmdData;
         vCmd.sourceAdr = 0;
         vCmd.destinationAdr = 1;
@@ -273,7 +284,7 @@ public class Example {
 
     private static void sendPanTiltAbsolutePos(SerialPort serialPort) throws SerialPortException {
         byte[] cmdData = (new PanTiltAbsolutePosCmd()).createCommandData();
-        com.agh.command.ViscaCommand vCmd = new com.agh.command.ViscaCommand();
+        ViscaCommand vCmd = new ViscaCommand();
         vCmd.commandData = cmdData;
         vCmd.sourceAdr = 0;
         vCmd.destinationAdr = 1;
@@ -284,7 +295,7 @@ public class Example {
 
     private static void sendAddress(SerialPort serialPort) throws SerialPortException {
         byte[] cmdData = (new AddressCmd()).createCommandData();
-        com.agh.command.ViscaCommand vCmd = new com.agh.command.ViscaCommand();
+        ViscaCommand vCmd = new ViscaCommand();
         vCmd.commandData = cmdData;
         vCmd.sourceAdr = 0;
         vCmd.destinationAdr = 8;
@@ -295,7 +306,7 @@ public class Example {
 
     private static void sendGetPanTiltMaxSpeed(SerialPort serialPort) throws SerialPortException {
         byte[] cmdData = (new GetPanTiltMaxSpeedCmd()).createCommandData();
-        com.agh.command.ViscaCommand vCmd = new com.agh.command.ViscaCommand();
+        ViscaCommand vCmd = new ViscaCommand();
         vCmd.commandData = cmdData;
         vCmd.sourceAdr = 0;
         vCmd.destinationAdr = 1;
@@ -319,7 +330,7 @@ public class Example {
 
     private static void sendZoomTeleStd(SerialPort serialPort) throws SerialPortException {
         byte[] cmdData = (new ZoomTeleStdCmd()).createCommandData();
-        com.agh.command.ViscaCommand vCmd = new com.agh.command.ViscaCommand();
+        ViscaCommand vCmd = new ViscaCommand();
         vCmd.commandData = cmdData;
         vCmd.sourceAdr = 0;
         vCmd.destinationAdr = 1;
@@ -330,7 +341,7 @@ public class Example {
 
     private static void sendZoomWideStd(SerialPort serialPort) throws SerialPortException {
         byte[] cmdData = (new ZoomWideStdCmd()).createCommandData();
-        com.agh.command.ViscaCommand vCmd = new ViscaCommand();
+        ViscaCommand vCmd = new ViscaCommand();
         vCmd.commandData = cmdData;
         vCmd.sourceAdr = 0;
         vCmd.destinationAdr = 1;

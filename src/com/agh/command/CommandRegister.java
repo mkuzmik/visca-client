@@ -1,15 +1,26 @@
 package com.agh.command;
 
-import com.agh.command.implementations.PanTiltDown;
-import com.agh.command.implementations.SendAddress;
+import com.agh.command.implementations.*;
 
 import java.util.Arrays;
 
+/**
+ * Each command must be registred here
+ */
 public enum CommandRegister {
 
-    PAN_TILT_DOWN(new PanTiltDown()),
-    SEND_ADDRESS(new SendAddress());
-
+    DOWN(new PanTiltDown()),
+    UP(new PanTiltUp()),
+    RIGHT(new PanTiltRight()),
+    LEFT(new PanTiltLeft()),
+    HOME(new PanTiltHome()),
+    ABSOLUTE_POS(new PanTiltAbsolutePos()),
+    GET_MAX_SPEED(new GetPanTiltMaxSpeed()),
+    CLEAR_ALL(new ClearAll()),
+    ZOOM_TELE(new ZoomTele()),
+    ZOOM_WIDE(new ZoomWide()),
+    ADDRESS(new SendAddress()),
+    SLEEP(new Sleep());
 
     CommandRegister(ViscaCommand command) {
         this.command = command;
