@@ -31,12 +31,7 @@ public class CommandLine {
     }
 
     public void print(ViscaResponse response) {
-        byte[] data = response.getData();
-        if (data.length > 0) {
-            System.out.println("Response: " + byteArrayToString(data));
-        } else {
-            System.out.println("OK");
-        }
+        System.out.println("Response: " + response.humanized());
     }
 
     private String readInput() {

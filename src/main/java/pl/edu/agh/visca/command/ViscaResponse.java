@@ -13,4 +13,12 @@ public class ViscaResponse {
     public byte[] getData() {
         return Util.cloneByteArray(data);
     }
+
+    public String humanized() {
+        // TODO: visca error code translation
+        if (data.length > 0)
+            return Util.byteArrayToString(getData());
+        else
+            return "OK";
+    }
 }

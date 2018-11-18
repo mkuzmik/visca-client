@@ -9,7 +9,7 @@ public class StartHttpServer extends TechnicalCommand {
 
     @Override
     public ViscaResponse execute(ViscaConnection viscaConnection) {
-        HttpServer.start(getPort());
+        HttpServer.start(getPort(), viscaConnection);
         return new ViscaResponse(new byte[0]);
     }
 
