@@ -18,6 +18,7 @@
         <dependency>
             <groupId>pl.edu.agh.kis.visca</groupId>
             <artifactId>visca</artifactId>
+            <version>0.0.1</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/visca.jar</systemPath>
         </dependency>
@@ -25,6 +26,7 @@
         <dependency>
             <groupId>jssc</groupId>
             <artifactId>jssc</artifactId>
+            <version>0.0.1</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/libs/jssc.jar</systemPath>
         </dependency>

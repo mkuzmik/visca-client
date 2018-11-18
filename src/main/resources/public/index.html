@@ -5,6 +5,57 @@
     <title>Visca test</title>
 </head>
 <body>
-VISCA TEST
+
+<div id="move-div">
+    Camera address: <input type="text" id="destination-input" required/>
+    <table>
+        <tr>
+            <td></td>
+            <td>
+                <button type="button" id="move-up" onclick="executeCommand('move-up')">&uarr;</button>
+            </td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>
+                <button type="button" id="move-left" onclick="executeCommand('move-left')">&larr;</button>
+            </td>
+            <td>
+                <button type="button" id="move-home" onclick="executeCommand('move-home')">&times;</button>
+            </td>
+            <td>
+                <button type="button" id="move-right" onclick="executeCommand('move-right')">&rarr;</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <button type="button" id="move-down" onclick="executeCommand('move-down')">&darr;</button>
+            </td>
+            <td></td>
+        </tr>
+
+        <tr></tr>
+
+        <tr>
+            <td>
+                <button type="button" id="zoom-tele" onclick="executeCommand('zoom-tele')">&plus;</button>
+            </td>
+            <td></td>
+            <td>
+                <button type="button" id="zoom-wide" onclick="executeCommand('zoom-wide')">&minus;</button>
+            </td>
+        </tr>
+
+    </table>
+</div>
+<br>
+<br>
+<div id="response-div">
+</div>
+
 </body>
+<script src="index.js"></script>
 </html>
