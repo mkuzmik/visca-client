@@ -1,5 +1,11 @@
 # Visca client
 
+## Compilig
+```aidl
+mvn install:install-file -Dfile=libs/visca.jar -DgroupId=pl.edu.agh.kis.visca -DartifactId=visca -Dversion=1.0 -Dpackaging=jar
+mvn install:install-file -Dfile=libs/jssc.jar -DgroupId=jssc -DartifactId=jssc -Dversion=1.0 -Dpackaging=jar
+```
+
 ## Running
 ```$xslt
 java -jar <path_to_jar> <port_name>

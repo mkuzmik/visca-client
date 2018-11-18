@@ -15,10 +15,20 @@ public class ViscaResponse {
     }
 
     public String humanized() {
-        // TODO: visca error code translation
         if (data.length > 0)
-            return Util.byteArrayToString(getData());
+            return translateResponse(Util.byteArrayToString(getData()));
         else
             return "OK";
     }
+
+    private String translateResponse(String response) {
+        for (ResponseMatch responseMatch : ResponseMatch.values()) {
+            if (response.matches(responseMatch.getPattern())) {
+                return responseMatch.getMessage();
+            }
+        }
+
+        return "Unknown response";
+    }
+
 }
