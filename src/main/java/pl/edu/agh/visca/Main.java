@@ -1,6 +1,7 @@
 package pl.edu.agh.visca;
 
 
+import pl.edu.agh.visca.cli.Logger;
 import pl.edu.agh.visca.connection.ViscaConnection;
 import pl.edu.agh.visca.connection.ViscaConnectionFactory;
 
@@ -8,6 +9,11 @@ public class Main {
 
     public static void main(String[] args) {
         ViscaConnection connection = getViscaConnection(args);
+
+        if (args.length > 1) {
+            boolean logger = Boolean.parseBoolean(args[1]);
+            Logger.loggingEnabled = logger;
+        }
 
         SimpleCliRunner.run(connection);
     }

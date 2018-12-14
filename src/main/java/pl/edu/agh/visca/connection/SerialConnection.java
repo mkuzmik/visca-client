@@ -1,5 +1,7 @@
 package pl.edu.agh.visca.connection;
 
+import pl.edu.agh.visca.Util;
+import pl.edu.agh.visca.cli.Logger;
 import pl.edu.agh.visca.command.ViscaResponse;
 import jssc.SerialPort;
 import jssc.SerialPortException;
@@ -36,6 +38,7 @@ public class SerialConnection implements ViscaConnection {
 
     public boolean writeBytes(byte[] data) {
         try {
+            Logger.info("Writing bytes: %s", Util.byteArrayToString(data));
             return serialPort.writeBytes(data);
         } catch (SerialPortException ex) {
             throw new ViscaConnectionException("Cannot write to serial port", ex);

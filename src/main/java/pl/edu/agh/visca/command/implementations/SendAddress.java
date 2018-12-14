@@ -10,6 +10,7 @@ public class SendAddress extends ViscaCommand {
     @Override
     public ViscaResponse execute(ViscaConnection viscaConnection) {
         byte[] commandData = getCommandData(new AddressCmd());
+        commandData[2] = Byte.parseByte(getRequiredParam("addr"));
         viscaConnection.writeBytes(commandData);
         return viscaConnection.readResponse();
     }

@@ -28,7 +28,13 @@ public abstract class ViscaCommand {
         vCmd.commandData = cmdData;
         vCmd.sourceAdr = resolveSourceAddress();
         vCmd.destinationAdr = resolveDestinationAddress();
-        return vCmd.getCommandData();
+        byte[] commandData = vCmd.getCommandData();
+        String speed1 = getParam("speed");
+        if (speed1 != null) {
+            commandData[4] = Byte.parseByte(speed1);
+            commandData[5] = Byte.parseByte(speed1);
+        }
+        return commandData;
     }
 
     protected String getRequiredParam(String param) {
@@ -37,6 +43,10 @@ public abstract class ViscaCommand {
             throw new CommandParameterException(String.format("Parameter %s is required", param));
         }
         return value;
+    }
+
+    protected String getParam(String param) {
+        return getParams().get(param);
     }
 
     private byte resolveSourceAddress() {

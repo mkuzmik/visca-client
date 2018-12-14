@@ -1,6 +1,7 @@
 package pl.edu.agh.visca.command;
 
 import pl.edu.agh.visca.Util;
+import pl.edu.agh.visca.cli.Logger;
 
 public class ViscaResponse {
 
@@ -15,8 +16,10 @@ public class ViscaResponse {
     }
 
     public String humanized() {
+        Logger.info("Response data fetching %s", Util.byteArrayToString(getData()));
+
         if (data.length > 0)
-            return translateResponse(Util.byteArrayToString(getData()));
+            return translateResponse(Util.byteArrayToString(getData()).trim());
         else
             return "OK";
     }
@@ -28,7 +31,7 @@ public class ViscaResponse {
             }
         }
 
-        return "Unknown response";
+        return String.format("Unknown response: %s", response);
     }
 
 }
